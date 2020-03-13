@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A basic React JS app built in under two hours to track cases on a map of the novel coronavirus.
+
+Demo cna be seen [here](https://covid19-map-track.herokuapp.com/)
 
 ## Available Scripts
 
