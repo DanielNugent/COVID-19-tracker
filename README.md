@@ -1,6 +1,6 @@
-A basic React JS app built in under two hours to track cases on a map of the novel coronavirus.
+A basic React JS (+Mapbox) app built in under two hours to track cases on a map of the novel coronavirus.
 
-Demo cna be seen [here](https://covid19-map-track.herokuapp.com/)
+Demo can be seen [here](https://covid19-map-track.herokuapp.com/)
 
 ## Available Scripts
 
