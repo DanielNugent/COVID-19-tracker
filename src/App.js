@@ -29,9 +29,6 @@ export default function App() {
   return (
     <div style = {{margin: 10}}>
       <h1>Coronavirus Map Tracker</h1>
-     {/*  {data && data[0].map((val, key) => {
-            return <p key = {key}>{val}</p>
-       })} */}
        <Map data = {data}/>
     </div>
   );
