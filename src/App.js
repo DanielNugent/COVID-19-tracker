@@ -5,7 +5,6 @@ import Map from './Map';
 export default function App() {
   const [data, setData] = useState([[]]);
   useEffect(() => {
-    const key = "d84b6847dcmshcfba0d992240a03p1c6d59jsne1a5ce972198";
     const URL =
       "https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php";
     axios
