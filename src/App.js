@@ -8,7 +8,7 @@ export default function App() {
     const URL =
       "https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php";
     axios
-      .get(URL, { headers: {"x-rapidapi-key": key }})
+      .get(URL, { headers: {"x-rapidapi-key": process.env.REACT_APP_MAP_KEY }})
       .then(res => {
         const d = res.data.countries_stat;
         var result = d.map(country => {
