@@ -16,7 +16,7 @@ export default function Map({ data }) {
     var res = [0, 0];
     coords.map(c => {
       if (c.name.localeCompare(country) === 0) {
-        console.log("found");
+    //    console.log("found");
         res = [c.latitude, c.longitude];
       }
     });
