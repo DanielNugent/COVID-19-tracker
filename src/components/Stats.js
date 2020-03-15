@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Stats({country}){
+const Stats = ({country}) => {
     return(
       <div>
           <p>
@@ -31,3 +31,4 @@ export default function Stats({country}){
       </div>
     );
 }
+export default Stats;

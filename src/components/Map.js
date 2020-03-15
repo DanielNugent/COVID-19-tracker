@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import Stats from './Stats';
-import coords from "./coords";
-import marker from "./toxic.svg";
-export default function Map({ data }) {
+import Stats from "./Stats";
+import coords from "../coords";
+import marker from "../toxic.svg";
+import { DataContext } from "../App";
+
+const Map = () => {
+  const data = useContext(DataContext);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100%",
-    height: 1000,
+    height: 960,
     latitude: 20,
     longitude: 0,
     zoom: 3
@@ -16,7 +19,6 @@ export default function Map({ data }) {
     var res = [0, 0];
     coords.map(c => {
       if (c.name.localeCompare(country) === 0) {
-    //    console.log("found");
         res = [c.latitude, c.longitude];
       }
     });
@@ -30,7 +32,7 @@ export default function Map({ data }) {
       minZoom={3}
       maxZoom={7}
     >
-      {data.map((country, key) => {
+      {data && data.map((country, key) => {
         return (
           <Marker
             key={key}
@@ -52,14 +54,15 @@ export default function Map({ data }) {
         <Popup
           latitude={getCoords(selectedCountry[0])[0]}
           longitude={getCoords(selectedCountry[0])[1]}
-          onClose={()=> {
-              setSelectedCountry(null)
+          onClose={() => {
+            setSelectedCountry(null);
           }}
           anchor="top"
         >
-          <Stats country = {selectedCountry}/>
+          <Stats country={selectedCountry} />
         </Popup>
       ) : null}
     </ReactMapGL>
   );
-}
+};
+export default Map;
