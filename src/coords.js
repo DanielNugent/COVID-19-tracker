@@ -643,8 +643,8 @@ const data = [
   },
   {
     country: "IT",
-    latitude: 42.87194,
-    longitude: 12.56738,
+    latitude: 44.87194,
+    longitude: 9.56738,
     name: "Italy"
   },
   {

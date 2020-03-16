@@ -3,10 +3,12 @@ import axios from "axios";
 import Wrapper from "./components/Wrapper";
 import Map from "./components/Map";
 import Sidebar from "./components/Sidebar";
+import Modal from "./components/Modal";
 export const DataContext = React.createContext();
 
 export const App = () => {
   const [data, setData] = useState();
+  const [selectedModal, setSelectedModal] = useState();
   useEffect(() => {
     const URL =
       "https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php";
@@ -31,10 +33,17 @@ export const App = () => {
       });
   }, []);
   return (
-    <DataContext.Provider value={data}>
+    <DataContext.Provider
+      value={{
+        data: data,
+        selectedModal: selectedModal,
+        setSelectedModal: setSelectedModal
+      }}
+    >
       <Wrapper>
         <Sidebar />
         <Map />
+        <Modal/>
       </Wrapper>
     </DataContext.Provider>
   );

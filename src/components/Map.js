@@ -7,7 +7,6 @@ import { DataContext } from "../App";
 
 const Map = () => {
   const data = useContext(DataContext);
-  const [selectedCountry, setSelectedCountry] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100%",
     height: 960,
@@ -16,7 +15,7 @@ const Map = () => {
     zoom: 3
   });
   const getCoords = country => {
-    var res = [0, 0];
+    let res = [0, 0];
     coords.map(c => {
       if (c.name.localeCompare(country) === 0) {
         res = [c.latitude, c.longitude];
@@ -27,41 +26,32 @@ const Map = () => {
   return (
     <ReactMapGL
       {...viewport}
+      mapStyle="mapbox://styles/mapbox/light-v9"
       onViewportChange={setViewport}
       mapboxApiAccessToken={process.env.REACT_APP_MAP_KEY}
       minZoom={3}
       maxZoom={7}
     >
-      {data && data.map((country, key) => {
-        return (
-          <Marker
-            key={key}
-            latitude={getCoords(country[0])[0]}
-            longitude={getCoords(country[0])[1]}
-          >
-            <button
-              onClick={e => {
-                e.preventDefault();
-                setSelectedCountry(country);
-              }}
+      {data.data &&
+        data.data.map((country, key) => {
+          return (
+            <Marker
+              key={key}
+              latitude={getCoords(country[0])[0]}
+              longitude={getCoords(country[0])[1]}
             >
-              <img style={{ width: 10, height: 10 }} src={marker} alt="" />
-            </button>
-          </Marker>
-        );
-      })}
-      {selectedCountry ? (
-        <Popup
-          latitude={getCoords(selectedCountry[0])[0]}
-          longitude={getCoords(selectedCountry[0])[1]}
-          onClose={() => {
-            setSelectedCountry(null);
-          }}
-          anchor="top"
-        >
-          <Stats country={selectedCountry} />
-        </Popup>
-      ) : null}
+              <button
+                onClick={e => {
+                  e.preventDefault();
+                  data.setSelectedModal(country)
+                }}
+              >
+                <img style={{ width: 10, height: 10 }} src={marker} alt="" />
+              </button>
+            </Marker>
+          );
+        })}
+    
     </ReactMapGL>
   );
 };
