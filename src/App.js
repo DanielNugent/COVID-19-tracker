@@ -25,7 +25,7 @@ export const App = () => {
           });
           return arr;
         });
-        //  console.log(result);
+          console.log(result);
         setData(result);
       })
       .catch(err => {

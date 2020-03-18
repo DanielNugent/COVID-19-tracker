@@ -43,10 +43,10 @@ const MyModal = () => {
               deaths: {data.selectedModal[2]}
           </p>
           <p>
-              active: {data.selectedModal[7]}
+              active: {data.selectedModal[8]}
           </p>
           <p>
-              critical: {data.selectedModal[3]}
+              critical: {data.selectedModal[7]}
           </p>
           <p>
               recovered: {data.selectedModal[4]}
@@ -56,6 +56,9 @@ const MyModal = () => {
           </p>
           <p>
               new deaths: {data.selectedModal[5]}
+          </p>
+          <p>
+              per 1M population: {data.selectedModal[9]}
           </p>
         </Modal>
       )}
