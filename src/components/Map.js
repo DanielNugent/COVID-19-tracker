@@ -1,12 +1,11 @@
 import React, { useState, useContext } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import Stats from "./Stats";
+import ReactMapGL, { Marker } from "react-map-gl";
 import coords from "../coords";
 import marker from "../toxic.svg";
 import { DataContext } from "../App";
 
 const Map = () => {
-  const data = useContext(DataContext);
+  const {data, setSelectedModal} = useContext(DataContext);
   const [viewport, setViewport] = useState({
     width: "100%",
     height: 960,
@@ -32,8 +31,8 @@ const Map = () => {
       minZoom={3}
       maxZoom={7}
     >
-      {data.data &&
-        data.data.map((country, key) => {
+      {data &&
+        data.map((country, key) => {
           return (
             <Marker
               key={key}
@@ -43,7 +42,7 @@ const Map = () => {
               <button
                 onClick={e => {
                   e.preventDefault();
-                  data.setSelectedModal(country)
+                  setSelectedModal(country)
                 }}
               >
                 <img style={{ width: 10, height: 10 }} src={marker} alt="" />

@@ -17,15 +17,18 @@ export const App = () => {
         headers: { "x-rapidapi-key": process.env.REACT_APP_API_KEY }
       })
       .then(res => {
-        const d = res.data.countries_stat;
-        var result = d.map(country => {
+        const data = res.data.countries_stat;
+        var result = data
+        .filter(country => country['country_name'] !== '')
+        .map(country => {              
           var arr = [];
-          Object.keys(country).map(key => {
+          Object.keys(country).map(key => {      
             return arr.push(country[key]);
           });
           return arr;
+                   
         });
-          console.log(result);
+        console.log(result);
         setData(result);
       })
       .catch(err => {
