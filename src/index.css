@@ -26,7 +26,8 @@ li {
 }
 
 ul li {
-    padding: 20px 20px;
+    padding: 20px 15px;
+    padding-right: 40px;
     white-space: nowrap;
     text-decoration: none;
     user-select: none;
